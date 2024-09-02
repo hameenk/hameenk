@@ -1,4 +1,6 @@
 <h1 align="center">👋 Hi, I'm Mohammed Hameen </h1>
+<h3 align="center"> <img src="https://readme-typing-svg.herokuapp.com?color=0357F7&lines=beginner+Developer+%3A)" /> </h3>
+
 
 <h3 align="left">Web Tech Stack :</h3>
 <div align="left">
