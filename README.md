@@ -2,7 +2,7 @@
 <h3 align="center"> <img src="https://readme-typing-svg.herokuapp.com?color=0357F7&lines=Flutter+Developer+%3A)" /> </h3>
 
 # My Social Profiles
-<p align="center">
+<p align="left">
 <a href="https://www.instagram.com/ameen__k____?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><img alt="Instagram" src="https://img.shields.io/badge/Hameen-%23E4405F.svg?&style=for-the-badge&logo=Instagram&logoColor=white"/></a>
 <a href="https://x.com/Muhamme52643856?t=zyLCmsmR2eALjTTDUtS3DA&s=08" target="_blank"><img alt="Twitter" src="https://img.shields.io/badge/Hameen-%231DA1F2.svg?&style=for-the-badge&logo=Twitter&logoColor=white"/></a>
 <a href="hameenmohammed9@gmail.com"><img alt="Gmail" src="https://img.shields.io/badge/Hameen-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
