@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mohammed Hameen — Dev Profile</title>
+  <style>
+    :root {
+      --color-background-primary: #ffffff;
+      --color-background-secondary: #f5f5f5;
+      --color-background-info: #E6F1FB;
+      --color-text-primary: #111111;
+      --color-text-secondary: #555555;
+      --color-text-tertiary: #888888;
+      --color-text-info: #0C447C;
+      --color-text-success: #27500A;
+      --color-border-tertiary: rgba(0,0,0,0.1);
+      --color-border-secondary: rgba(0,0,0,0.18);
+      --color-border-primary: rgba(0,0,0,0.3);
+      --color-border-info: #B5D4F4;
+      --font-mono: 'Fira Code', 'Cascadia Code', 'JetBrains Mono', monospace;
+      --border-radius-md: 8px;
+      --border-radius-lg: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-background-primary: #1a1a1a;
+        --color-background-secondary: #252525;
+        --color-background-info: #0C2A4A;
+        --color-text-primary: #eeeeee;
+        --color-text-secondary: #aaaaaa;
+        --color-text-tertiary: #666666;
+        --color-text-info: #85B7EB;
+        --color-text-success: #C0DD97;
+        --color-border-tertiary: rgba(255,255,255,0.08);
+        --color-border-secondary: rgba(255,255,255,0.15);
+        --color-border-primary: rgba(255,255,255,0.25);
+        --color-border-info: #185FA5;
+      }
+      .tag-purple { background: #26215C !important; color: #CECBF6 !important; border-color: #534AB7 !important; }
+      .tag-green  { background: #173404 !important; color: #C0DD97 !important; border-color: #3B6D11 !important; }
+      .tag-amber  { background: #412402 !important; color: #FAC775 !important; border-color: #854F0B !important; }
+      .tag-teal   { background: #04342C !important; color: #9FE1CB !important; border-color: #0F6E56 !important; }
+      .tag-coral  { background: #4A1B0C !important; color: #F5C4B3 !important; border-color: #993C1D !important; }
+      .cat-mob    { background: #0C2A4A !important; color: #85B7EB !important; }
+      .cat-web    { background: #173404 !important; color: #C0DD97 !important; }
+      .cat-ai     { background: #26215C !important; color: #CECBF6 !important; }
+      .cat-full   { background: #412402 !important; color: #FAC775 !important; }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-mono);
+      background: var(--color-background-primary);
+      color: var(--color-text-primary);
+      padding: 1.5rem 1rem;
+    }
+
+    .wrap { max-width: 800px; margin: 0 auto; }
+
+    .top-bar { height: 3px; border-radius: 2px; background: #378ADD; margin-bottom: 1rem; }
+
+    /* HEADER */
+    .header {
+      border: 0.5px solid var(--color-border-secondary);
+      border-radius: var(--border-radius-lg);
+      padding: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .header-row { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+    .avi {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: var(--color-background-info);
+      border: 1.5px solid var(--color-border-info);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 500; color: var(--color-text-info); flex-shrink: 0;
+    }
+    .h-name { font-size: 18px; font-weight: 500; margin-bottom: 3px; }
+    .h-name span { color: var(--color-text-info); }
+    .h-sub { font-size: 12px; color: var(--color-text-secondary); line-height: 1.7; }
+    .typing-wrap { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--color-text-info); margin-top: 8px; }
+    .tp { color: var(--color-text-success); }
+    .cur {
+      display: inline-block; width: 7px; height: 13px;
+      background: var(--color-text-info);
+      animation: bl 1s infinite; vertical-align: middle;
+    }
+    @keyframes bl { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .pill-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 9px; border-radius: 20px; font-size: 11px;
+      border: 0.5px solid var(--color-border-tertiary);
+      background: var(--color-background-secondary);
+      color: var(--color-text-secondary);
+    }
+    .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .dg { background: #27c93f; } .dy { background: #f59e0b; }
+    .db { background: #378add; } .dp { background: #7f77dd; }
+
+    /* SECTION */
+    .sec { margin-bottom: 1rem; }
+    .sec-title {
+      font-size: 10px; font-weight: 500; color: var(--color-text-tertiary);
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+    }
+    .sec-title::after { content: ''; flex: 1; height: 0.5px; background: var(--color-border-tertiary); }
+
+    /* STATS */
+    .stats-g { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
+    .scard { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px; text-align: center; }
+    .snum { font-size: 20px; font-weight: 500; color: var(--color-text-info); }
+    .slbl { font-size: 10px; color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+    /* SKILL CATEGORIES */
+    .cat-block { margin-bottom: 10px; }
+    .cat-label {
+      font-size: 10px; color: var(--color-text-tertiary);
+      letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+    }
+    .cat-label::before { content: ''; display: inline-block; width: 3px; height: 11px; border-radius: 1px; }
+    .cl-mobile::before { background: #378ADD; }
+    .cl-web::before    { background: #D85A30; }
+    .cl-ai::before     { background: #7F77DD; }
+    .cl-db::before     { background: #1D9E75; }
+    .cl-tools::before  { background: #BA7517; }
+    .cl-lang::before   { background: #993C1D; }
+
+    .stk-g { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 6px; }
+    .stk {
+      background: var(--color-background-secondary);
+      border: 0.5px solid var(--color-border-tertiary);
+      border-radius: var(--border-radius-md);
+      padding: 8px 10px; display: flex; align-items: center; gap: 7px;
+    }
+    .stk:hover { border-color: var(--color-border-secondary); }
+    .si { width: 24px; height: 24px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+    .sn { font-size: 11px; color: var(--color-text-primary); font-weight: 500; }
+    .ss { font-size: 9px; color: var(--color-text-tertiary); }
+
+    /* SKILL BARS */
+    .br-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+    .br-lbl { font-size: 11px; color: var(--color-text-secondary); width: 90px; flex-shrink: 0; }
+    .br-track { flex: 1; height: 3px; background: var(--color-border-tertiary); border-radius: 2px; overflow: hidden; }
+    .br-fill  { height: 100%; border-radius: 2px; }
+    .br-pct { font-size: 10px; color: var(--color-text-tertiary); width: 30px; text-align: right; }
+
+    /* PROJECTS */
+    .proj-list { display: flex; flex-direction: column; gap: 7px; }
+    .proj {
+      background: var(--color-background-secondary);
+      border: 0.5px solid var(--color-border-tertiary);
+      border-radius: var(--border-radius-md);
+      padding: 11px 12px; display: flex; gap: 10px; align-items: flex-start;
+    }
+    .proj:hover { border-color: var(--color-border-secondary); }
+    .pico { width: 34px; height: 34px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+    .ptitle { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+    .pdesc  { font-size: 11px; color: var(--color-text-secondary); margin-top: 2px; line-height: 1.5; }
+    .ptags  { display: flex; gap: 3px; margin-top: 5px; flex-wrap: wrap; }
+    .ptag { padding: 2px 6px; border-radius: 4px; font-size: 10px; }
+    .tag-blue   { background: var(--color-background-info); color: var(--color-text-info); border: 0.5px solid var(--color-border-info); }
+    .tag-purple { background: #EEEDFE; color: #3C3489; border: 0.5px solid #AFA9EC; }
+    .tag-green  { background: #EAF3DE; color: #27500A; border: 0.5px solid #97C459; }
+    .tag-amber  { background: #FAEEDA; color: #633806; border: 0.5px solid #EF9F27; }
+    .tag-teal   { background: #E1F5EE; color: #085041; border: 0.5px solid #5DCAA5; }
+    .tag-coral  { background: #FAECE7; color: #712B13; border: 0.5px solid #F0997B; }
+    .proj-cat   { font-size: 9px; padding: 2px 6px; border-radius: 3px; margin-left: auto; flex-shrink: 0; font-weight: 500; }
+    .cat-mob  { background: #E6F1FB; color: #0C447C; }
+    .cat-web  { background: #EAF3DE; color: #27500A; }
+    .cat-ai   { background: #EEEDFE; color: #3C3489; }
+    .cat-full { background: #FAEEDA; color: #633806; }
+
+    /* SOCIALS */
+    .soc-row { display: flex; flex-wrap: wrap; gap: 5px; }
+    .sbtn {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 5px 10px; border-radius: var(--border-radius-md);
+      border: 0.5px solid var(--color-border-secondary);
+      background: var(--color-background-secondary);
+      font-size: 11px; font-family: var(--font-mono);
+      color: var(--color-text-secondary);
+      text-decoration: none; cursor: pointer;
+      transition: all 0.15s;
+    }
+    .sbtn:hover { border-color: var(--color-border-primary); color: var(--color-text-primary); background: var(--color-background-primary); }
+    .sico { width: 14px; height: 14px; border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+
+    /* FOOTER */
+    .foot {
+      text-align: center; font-size: 11px; color: var(--color-text-tertiary);
+      padding-top: 10px; border-top: 0.5px solid var(--color-border-tertiary); margin-top: 0.5rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 480px) {
+      .stats-g { grid-template-columns: repeat(2,1fr); }
+      .header-row { flex-direction: column; align-items: center; text-align: center; }
+      .typing-wrap { justify-content: center; }
+      .pill-row { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top-bar"></div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-row">
+      <div class="avi">MH</div>
+      <div>
+        <div class="h-name">Mohammed <span>Hameen</span></div>
+        <div class="h-sub">Flutter · Web · AI/ML Developer &nbsp;|&nbsp; BCA @ Yenepoya University<br>Bengaluru, India</div>
+        <div class="typing-wrap">
+          <span class="tp">~/dev $</span>
+          <span id="typed"></span><span class="cur"></span>
+        </div>
+      </div>
+    </div>
+    <div class="pill-row">
+      <span class="pill"><span class="dot dg"></span>open to work</span>
+      <span class="pill"><span class="dot db"></span>flutter dev</span>
+      <span class="pill"><span class="dot dy"></span>web developer</span>
+      <span class="pill"><span class="dot dp"></span>ai/ml explorer</span>
+      <span class="pill">🇮🇳 bengaluru</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="sec">
+    <div class="sec-title">// quick stats</div>
+    <div class="stats-g">
+      <div class="scard"><div class="snum">6+</div><div class="slbl">projects</div></div>
+      <div class="scard"><div class="snum">20+</div><div class="slbl">skills</div></div>
+      <div class="scard"><div class="snum">3</div><div class="slbl">domains</div></div>
+      <div class="scard"><div class="snum">∞</div><div class="slbl">coffee</div></div>
+    </div>
+  </div>
+
+  <!-- TECH STACK -->
+  <div class="sec">
+    <div class="sec-title">// tech stack — 20+ skills</div>
+
+    <div class="cat-block">
+      <div class="cat-label cl-mobile">mobile development</div>
+      <div class="stk-g">
+        <div class="stk"><div class="si" style="background:#E6F1FB">🐦</div><div><div class="sn">Flutter</div><div class="ss">cross-platform</div></div></div>
+        <div class="stk"><div class="si" style="background:#E6F1FB">🎯</div><div><div class="sn">Dart</div><div class="ss">primary lang</div></div></div>
+        <div class="stk"><div class="si" style="background:#FAEEDA">🔥</div><div><div class="sn">Firebase</div><div class="ss">backend</div></div></div>
+        <div class="stk"><div class="si" style="background:#E1F5EE">🐝</div><div><div class="sn">Hive</div><div class="ss">local db</div></div></div>
+        <div class="stk"><div class="si" style="background:#EEEDFE">📡</div><div><div class="sn">WebRTC</div><div class="ss">real-time</div></div></div>
+        <div class="stk"><div class="si" style="background:#E6F1FB">🔗</div><div><div class="sn">REST API</div><div class="ss">integration</div></div></div>
+      </div>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-label cl-web">web development</div>
+      <div class="stk-g">
+        <div class="stk"><div class="si" style="background:#FCEBEB">🌐</div><div><div class="sn">HTML5</div><div class="ss">markup</div></div></div>
+        <div class="stk"><div class="si" style="background:#E6F1FB">🎨</div><div><div class="sn">CSS3</div><div class="ss">styling</div></div></div>
+        <div class="stk"><div class="si" style="background:#FAEEDA">⚡</div><div><div class="sn">JavaScript</div><div class="ss">scripting</div></div></div>
+        <div class="stk"><div class="si" style="background:#EEEDFE">🔵</div><div><div class="sn">PHP</div><div class="ss">server-side</div></div></div>
+        <div class="stk"><div class="si" style="background:#E1F5EE">🧮</div><div><div class="sn">XAMPP</div><div class="ss">local server</div></div></div>
+        <div class="stk"><div class="si" style="background:#FAEEDA">💳</div><div><div class="sn">Razorpay</div><div class="ss">payments</div></div></div>
+      </div>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-label cl-ai">ai / ml</div>
+      <div class="stk-g">
+        <div class="stk"><div class="si" style="background:#EAF3DE">🐍</div><div><div class="sn">Python</div><div class="ss">primary lang</div></div></div>
+        <div class="stk"><div class="si" style="background:#EEEDFE">🤖</div><div><div class="sn">Scikit-learn</div><div class="ss">ml models</div></div></div>
+        <div class="stk"><div class="si" style="background:#EAF3DE">🐼</div><div><div class="sn">Pandas</div><div class="ss">data wrangling</div></div></div>
+        <div class="stk"><div class="si" style="background:#EAF3DE">🔢</div><div><div class="sn">NumPy</div><div class="ss">numerical</div></div></div>
+        <div class="stk"><div class="si" style="background:#EEEDFE">🧠</div><div><div class="sn">NLP</div><div class="ss">text processing</div></div></div>
+        <div class="stk"><div class="si" style="background:#FAEEDA">📊</div><div><div class="sn">Matplotlib</div><div class="ss">visualization</div></div></div>
+      </div>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-label cl-db">databases</div>
+      <div class="stk-g">
+        <div class="stk"><div class="si" style="background:#E6F1FB">🐬</div><div><div class="sn">MySQL</div><div class="ss">relational</div></div></div>
+        <div class="stk"><div class="si" style="background:#FAEEDA">🔥</div><div><div class="sn">Firestore</div><div class="ss">nosql cloud</div></div></div>
+        <div class="stk"><div class="si" style="background:#E1F5EE">🐝</div><div><div class="sn">Hive DB</div><div class="ss">local nosql</div></div></div>
+      </div>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-label cl-lang">languages</div>
+      <div class="stk-g">
+        <div class="stk"><div class="si" style="background:#FAECE7">☕</div><div><div class="sn">Java</div><div class="ss">oop</div></div></div>
+        <div class="stk"><div class="si" style="background:#E1F5EE">🔧</div><div><div class="sn">C</div><div class="ss">low-level</div></div></div>
+        <div class="stk"><div class="si" style="background:#EEEDFE">🔵</div><div><div class="sn">PHP</div><div class="ss">scripting</div></div></div>
+      </div>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-label cl-tools">tools &amp; devops</div>
+      <div class="stk-g">
+        <div class="stk"><div class="si" style="background:#E6F1FB">🐙</div><div><div class="sn">GitHub</div><div class="ss">vcs</div></div></div>
+        <div class="stk"><div class="si" style="background:#FAEEDA">📦</div><div><div class="sn">Git</div><div class="ss">version control</div></div></div>
+        <div class="stk"><div class="si" style="background:#EAF3DE">🚀</div><div><div class="sn">Firebase CLI</div><div class="ss">deploy</div></div></div>
+        <div class="stk"><div class="si" style="background:#E1F5EE">🧪</div><div><div class="sn">Postman</div><div class="ss">api testing</div></div></div>
+        <div class="stk"><div class="si" style="background:#FCEBEB">🖥️</div><div><div class="sn">VS Code</div><div class="ss">editor</div></div></div>
+        <div class="stk"><div class="si" style="background:#EEEDFE">🤖</div><div><div class="sn">AI Tools</div><div class="ss">copilot / gpt</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFICIENCY BARS -->
+  <div class="sec">
+    <div class="sec-title">// proficiency</div>
+    <div class="br-row"><span class="br-lbl">Flutter</span><div class="br-track"><div class="br-fill" style="width:90%;background:#378ADD"></div></div><span class="br-pct">90%</span></div>
+    <div class="br-row"><span class="br-lbl">Dart</span><div class="br-track"><div class="br-fill" style="width:88%;background:#378ADD"></div></div><span class="br-pct">88%</span></div>
+    <div class="br-row"><span class="br-lbl">Python</span><div class="br-track"><div class="br-fill" style="width:82%;background:#639922"></div></div><span class="br-pct">82%</span></div>
+    <div class="br-row"><span class="br-lbl">HTML/CSS/JS</span><div class="br-track"><div class="br-fill" style="width:83%;background:#D85A30"></div></div><span class="br-pct">83%</span></div>
+    <div class="br-row"><span class="br-lbl">Firebase</span><div class="br-track"><div class="br-fill" style="width:80%;background:#BA7517"></div></div><span class="br-pct">80%</span></div>
+    <div class="br-row"><span class="br-lbl">PHP / MySQL</span><div class="br-track"><div class="br-fill" style="width:70%;background:#1D9E75"></div></div><span class="br-pct">70%</span></div>
+    <div class="br-row"><span class="br-lbl">AI / ML</span><div class="br-track"><div class="br-fill" style="width:65%;background:#7F77DD"></div></div><span class="br-pct">65%</span></div>
+    <div class="br-row"><span class="br-lbl">Java</span><div class="br-track"><div class="br-fill" style="width:68%;background:#D85A30"></div></div><span class="br-pct">68%</span></div>
+    <div class="br-row"><span class="br-lbl">Git / GitHub</span><div class="br-track"><div class="br-fill" style="width:82%;background:#888780"></div></div><span class="br-pct">82%</span></div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="sec">
+    <div class="sec-title">// projects</div>
+    <div class="proj-list">
+
+      <div class="proj">
+        <div class="pico" style="background:#E6F1FB">🛒</div>
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <span class="ptitle">E-Commerce App</span>
+            <span class="proj-cat cat-full">flutter + web</span>
+          </div>
+          <div class="pdesc">Full-stack shopping app on XAMPP · Razorpay payment · cart, auth, order tracking · PHP + MySQL backend</div>
+          <div class="ptags">
+            <span class="ptag tag-blue">Flutter</span>
+            <span class="ptag tag-coral">PHP</span>
+            <span class="ptag tag-blue">MySQL</span>
+            <span class="ptag tag-teal">XAMPP</span>
+            <span class="ptag tag-amber">Razorpay</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="pico" style="background:#EAF3DE">🧾</div>
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <span class="ptitle">POS Accounting App</span>
+            <span class="proj-cat cat-full">flutter + web</span>
+          </div>
+          <div class="pdesc">Point-of-sale &amp; accounting system · Flutter mobile + web · sales tracking, inventory, billing, reports</div>
+          <div class="ptags">
+            <span class="ptag tag-blue">Flutter</span>
+            <span class="ptag tag-blue">Dart</span>
+            <span class="ptag tag-amber">Web</span>
+            <span class="ptag tag-teal">Firebase</span>
+            <span class="ptag tag-green">Accounting</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="pico" style="background:#FAEEDA">💻</div>
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <span class="ptitle">Developer Portfolio</span>
+            <span class="proj-cat cat-web">web</span>
+          </div>
+          <div class="pdesc">Terminal-aesthetic portfolio · scroll animations, typewriter, dark/light mode, EmailJS contact form</div>
+          <div class="ptags">
+            <span class="ptag tag-coral">HTML</span>
+            <span class="ptag tag-blue">CSS</span>
+            <span class="ptag tag-amber">JavaScript</span>
+            <span class="ptag tag-teal">EmailJS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="pico" style="background:#EEEDFE">🛡️</div>
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <span class="ptitle">Spam Email Detector</span>
+            <span class="proj-cat cat-ai">ai / ml</span>
+          </div>
+          <div class="pdesc">ML classifier for spam/ham emails &amp; SMS · TF-IDF vectorization · Naive Bayes / SVM</div>
+          <div class="ptags">
+            <span class="ptag tag-green">Python</span>
+            <span class="ptag tag-purple">Scikit-learn</span>
+            <span class="ptag tag-green">Pandas</span>
+            <span class="ptag tag-green">NumPy</span>
+            <span class="ptag tag-teal">NLP</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="pico" style="background:#EEEDFE">💬</div>
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <span class="ptitle">Blabber Chat App</span>
+            <span class="proj-cat cat-mob">mobile</span>
+          </div>
+          <div class="pdesc">Real-time chat &amp; calling · Firebase · messaging, WebRTC calls, notes, Blabber AI assistant</div>
+          <div class="ptags">
+            <span class="ptag tag-blue">Flutter</span>
+            <span class="ptag tag-amber">Firebase</span>
+            <span class="ptag tag-teal">WebRTC</span>
+            <span class="ptag tag-purple">AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="pico" style="background:#E1F5EE">📱</div>
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <span class="ptitle">WhatsApp UI Clone</span>
+            <span class="proj-cat cat-mob">mobile</span>
+          </div>
+          <div class="pdesc">Pixel-perfect Flutter clone · advanced widget architecture · UI/UX study</div>
+          <div class="ptags">
+            <span class="ptag tag-blue">Flutter</span>
+            <span class="ptag tag-blue">Dart</span>
+            <span class="ptag tag-teal">UI/UX</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SOCIALS -->
+  <div class="sec">
+    <div class="sec-title">// connect</div>
+    <div class="soc-row">
+      <a class="sbtn" href="https://github.com/hameenk" target="_blank"><span class="sico">🐙</span>github/hameenk</a>
+      <a class="sbtn" href="https://www.linkedin.com/in/muhammed-hameen-k-23a8b6303" target="_blank"><span class="sico" style="background:#0a66c2;color:#fff;font-size:9px;font-weight:500">in</span>linkedin</a>
+      <a class="sbtn" href="https://instagram.com/ameen__k___" target="_blank"><span class="sico">📸</span>instagram</a>
+      <a class="sbtn" href="https://x.com/Muhamme52643856" target="_blank"><span class="sico" style="font-weight:500;font-size:11px">𝕏</span>twitter</a>
+      <a class="sbtn" href="mailto:hameenmohammed9@gmail.com"><span class="sico">✉</span>gmail</a>
+      <a class="sbtn" href="https://wa.me/919745233071" target="_blank"><span class="sico">💬</span>whatsapp</a>
+    </div>
+  </div>
+
+  <div class="foot">~/dev $ echo "thanks for visiting · bengaluru, india 🇮🇳"</div>
+</div>
+
+<script>
+  const lines = [
+    'flutter build apk --release',
+    'dart pub get',
+    'python spam_detector.py',
+    'git push origin main',
+    'firebase deploy --only hosting',
+    'scikit-learn model.fit(X_train)',
+    'npm run build',
+    'postman collection.run()'
+  ];
+  let li = 0, ci = 0, del = false, wait = 0;
+  const el = document.getElementById('typed');
+  function tick() {
+    if (wait > 0) { wait--; setTimeout(tick, 80); return; }
+    const cur = lines[li];
+    if (!del) {
+      el.textContent = cur.slice(0, ++ci);
+      if (ci === cur.length) { del = true; wait = 20; }
+    } else {
+      el.textContent = cur.slice(0, --ci);
+      if (ci === 0) { del = false; li = (li + 1) % lines.length; wait = 5; }
+    }
+    setTimeout(tick, del ? 38 : 88);
+  }
+  tick();
+</script>
+</body>
+</html>
