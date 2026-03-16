@@ -1,1 +1,1 @@
-[View My Full Portfolio → hameenk.github.io]([https://...](https://...))
+ https://hameenk.github.io/hameenk/
